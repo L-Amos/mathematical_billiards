@@ -196,7 +196,6 @@ class Table:
             self.phase = [arc_length, cos_angle]
         self.collisions = [collisions_x, collisions_y]
 
-
     def plot(self, ball, animate=True):
         if self.phase_space:
             fig, (ax, ax2) = plt.subplots(2, 1)
@@ -219,6 +218,21 @@ class Table:
             ax.set_xlim([1.1*-self.dims[0], 1.1*self.dims[0]])
             ax.set_ylim([1.1*-self.dims[1], 1.1*self.dims[1]])
             ax2.set_ylim([-1, 1])
+        else:
+            # Top and Bottom Lines
+            top_bottom = np.linspace(-self.dims[0]/2, self.dims[0]/2, 100)
+            top_line = np.ones(top_bottom.shape) * self.dims[1]/2
+            bottom_line = -top_line
+            ax.plot(top_bottom, top_line, color='k')
+            ax.plot(top_bottom, bottom_line, color='k')
+            # Ends
+            theta = np.linspace(-np.pi/2, np.pi/2, 100)
+            x_right = self.dims[0]/2 + self.dims[1]/2 * np.cos(theta)
+            y_right = self.dims[1] * np.sin(theta)
+            ax.plot(x_right, y_right, color="k")
+            x_left = -self.dims[0]/2 + self.dims[1] * np.cos(theta+np.pi)
+            y_left = self.dims[1] * np.sin(theta+np.pi)
+            ax.plot(x_left, y_left, color="k")
 
         line, = ax.plot(self.collisions[0], self.collisions[1])
         if animate:
