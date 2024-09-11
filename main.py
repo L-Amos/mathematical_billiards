@@ -1,3 +1,4 @@
+import sys
 from src import table, ball, utils
 
 def main():
@@ -6,6 +7,8 @@ def main():
         geometry = input("Table Geometry (rectangle, elliptical or stadium): ")
         if geometry.lower() in allowed_geometries:
             break
+        elif geometry.lower() == "q":
+            sys.exit()
     billiards_table = table.Table(geometry.lower())
     billiards_ball = ball.Ball(billiards_table)
     billiards_table.reflections = utils.input_test("Enter the number of collisions to see: ", positive=True)

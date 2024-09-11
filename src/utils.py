@@ -1,9 +1,12 @@
 from time import sleep
+import sys
 import numpy as np
 
 def input_test(question, integer=True, positive=False):
     while True:
         user_input = input(question)
+        if user_input.lower() == "q":
+            sys.exit()  # Quit
         try:
             if integer:
                 user_input = int(user_input)
