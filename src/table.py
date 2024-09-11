@@ -193,7 +193,7 @@ class Table:
                         s+= semicircle_perimeter * 3/2 + central_width + ball.pos[0] + central_width/2
                 arc_length.append(s)  # x-axis of phase space plot
         if phase:
-            self.phase = [arc_length, cos_angle]
+            self.phase_space = [arc_length, cos_angle]
         self.collisions = [collisions_x, collisions_y]
 
     def plot(self, ball, animate=True):
