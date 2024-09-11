@@ -7,7 +7,7 @@ project is to simulate mathematical billiards on rectangular, elliptical and
 Bunimovich-stadium tables.
 
 ## How To Use
-On starting the program, the user is guided through several prompts to set up the parameters of the billiards table:
+On starting the program (`main.py`), the user is guided through several prompts to set up the parameters of the billiards table:
 - Type of table (rectangular, elliptical or stadium).
 - Dimensions of table.
 - Starting position of billiards ball.
