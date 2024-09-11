@@ -10,7 +10,7 @@ Bunimovich-stadium tables.
 On starting the program (`main.py`), the user is guided through several prompts to set up the parameters of the billiards table:
 - Type of table (rectangular, elliptical or stadium).
 - Dimensions of table.
-- Starting position of billiards ball.
+- Starting position of billiards ball (**Note**: the origin is defined as the **centre of the table**).
 - Angle of initial trajectory of billiards ball.
 - Number of collisions to simulate.
 
