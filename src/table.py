@@ -228,10 +228,10 @@ class Table:
             # Ends
             theta = np.linspace(-np.pi/2, np.pi/2, 100)
             x_right = self.dims[0]/2 + self.dims[1]/2 * np.cos(theta)
-            y_right = self.dims[1] * np.sin(theta)
+            y_right = self.dims[1]/2 * np.sin(theta)
             ax.plot(x_right, y_right, color="k")
-            x_left = -self.dims[0]/2 + self.dims[1] * np.cos(theta+np.pi)
-            y_left = self.dims[1] * np.sin(theta+np.pi)
+            x_left = -self.dims[0]/2 + self.dims[1]/2 * np.cos(theta+np.pi)
+            y_left = self.dims[1]/2 * np.sin(theta+np.pi)
             ax.plot(x_left, y_left, color="k")
 
         line, = ax.plot(self.collisions[0], self.collisions[1])
