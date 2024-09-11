@@ -23,6 +23,11 @@ class Table:
                     break    
                 print("Error: semi-major axis must be larger than semi-minor axis. ")
             self.dims = np.array([a, b])
+        else:
+            width = utils.input_test("Central width (positive integer): ", positive=True)
+            height = utils.input_test("Central height (positive integer): ", positive=True)
+            self.dims = np.array([width, height])
+
     
     def rectangle_calc(self, ball):
         width, height = self.dims
@@ -105,6 +110,9 @@ class Table:
                 phase_space_y.append(cos_alpha)
                 self.phase_space = [phase_space_x, phase_space_y]
             self.collisions = [collisions_x, collisions_y]
+
+    def stadium_calc(self, ball):
+        
 
     def plot(self, ball, animate=True):
         if self.phase_space:
