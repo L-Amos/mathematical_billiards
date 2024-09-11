@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from matplotlib.patches import Rectangle
 from scipy import integrate
-from IPython.display import HTML 
 from src import utils
 
 class Table:
@@ -245,4 +244,4 @@ class Table:
         ax.set_ylabel("$y$ Position")
         fig.set_facecolor('lightgrey')
         ax.legend()
-        HTML(ani.to_html5_video())
+        plt.show()
