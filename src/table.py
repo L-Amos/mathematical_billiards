@@ -234,10 +234,10 @@ class Table:
             y_left = self.dims[1]/2 * np.sin(theta+np.pi)
             ax.plot(x_left, y_left, color="k")
 
-        line, = ax.plot(self.collisions[0], self.collisions[1])
+        line, = ax.plot(self.collisions[0], self.collisions[1], zorder=1)
+        start_point = ax.scatter(ball.init_pos[0], ball.init_pos[1], marker='o', s=50, color="r", zorder=2, label="Initial Position")  # Plot starting position
         if animate:
-            ani = animation.FuncAnimation(fig, utils.update, len(self.collisions[0]), interval= 50*100/self.reflections, fargs=[self.collisions[0], self.collisions[1], line], blit=True, repeat=False)
-        ax.scatter(ball.init_pos[0], ball.init_pos[1], marker='o', s=50, color="r", zorder=3, label="Initial Position")  # Plot starting position
+            ani = animation.FuncAnimation(fig, utils.update, len(self.collisions[0]), interval= 50*100/self.reflections, fargs=[self.collisions[0], self.collisions[1], line, start_point], blit=True, repeat=False)
         # Plot Styling & Titles
         ax.set_title(f"Trajectories of a Mathematical Billiard Ball\n in a {self.geometry.title()} Geometry ({self.reflections} Collisions)")
         ax.set_xlabel("$x$ Position")

@@ -23,7 +23,7 @@ def input_test(question, integer=True, positive=False):
                 break
     return user_input
 
-def update(num, collisions_x, collisions_y, line):
+def update(num, collisions_x, collisions_y, line, start_pos):
     """Plot Update Function
     
     Animates plotting of trajectories.
@@ -45,7 +45,7 @@ def update(num, collisions_x, collisions_y, line):
             updated line for matplotlib plot
     """
     line.set_data(collisions_x[:num+1], collisions_y[:num+1])
-    return line,
+    return line, start_pos
 
 def arc_length(angle, a, b):  
     """Arc Length of Ellipse 
