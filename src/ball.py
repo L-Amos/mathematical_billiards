@@ -2,7 +2,27 @@ from src import utils
 import numpy as np
 
 class Ball:
+    """Class representing billiards ball.
+
+        Attributes
+        ----------
+        init_pos: array
+            Array of initial [x, y] position.
+        pos: array
+            Array of current [x, y] position.
+        angle: float
+            Angle at which ball is initially hit.
+        vel: float
+            Current velocity of ball.
+    """
     def __init__(self, table):
+        """Creates ball instance.
+
+        Parameters
+        ----------
+        table : Table class instance
+            Table class instance on which the ball is placed.
+        """
         while True:
             x = utils.input_test("Enter starting x position: ", integer=False)
             y = utils.input_test("Enter starting y position: ", integer=False)
