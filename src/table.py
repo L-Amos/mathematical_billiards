@@ -203,7 +203,6 @@ class Table:
             ax2.scatter(self.phase_space[0], self.phase_space[1])
             ax2.set_xlabel("$s$")
             ax2.set_ylabel(r"$\cos{\theta}$")
-            ax2.set_aspect("equal")
         else:
             fig, ax = plt.subplots()
         if self.geometry == "rectangle":
@@ -242,6 +241,6 @@ class Table:
         ax.set_title(f"Trajectories of a Mathematical Billiard Ball\n in a {self.geometry.title()} Geometry ({self.reflections} Collisions)")
         ax.set_xlabel("$x$ Position")
         ax.set_ylabel("$y$ Position")
-        fig.set_facecolor('lightgrey')
-        ax.legend()
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), fancybox=True, shadow=True)
+        plt.tight_layout()
         plt.show()
