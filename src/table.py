@@ -6,7 +6,29 @@ from scipy import integrate
 from src import utils
 
 class Table:
+    """Class representing the billiards table.
+
+        Attributes
+        ----------
+        geometry: str
+            Geometry of table. Can be rectangle, elliptical or stadium.
+        reflections: int
+            Number of collisions to simulate.
+        collisions: list
+            Coordinates of collisions.
+        phase_space: list
+            Phase space coordinates of collisions.
+        dims: list
+            Dimensions of the table.
+    """
     def __init__(self, geometry):
+        """Creates the billiards table.
+
+        Parameters
+        ----------
+        geometry : str
+            Desired geometry of the table (rectangle, elliptical or stadium)
+        """
         self.geometry = geometry
         self.reflections = 0
         self.collisions = []
@@ -27,9 +49,15 @@ class Table:
             width = utils.input_test("Central width (positive integer): ", positive=True)
             height = utils.input_test("Central height (positive integer): ", positive=True)
             self.dims = np.array([width, height])
-
     
     def rectangle_calc(self, ball):
+        """Calculates collisions with the boundary of a rectangular table.
+
+        Parameters
+        ----------
+        ball : Ball class instance
+            The ball instance belonging to this table instance.
+        """
         width, height = self.dims
         # Collision Detection
         collisions_x = [ball.pos[0]]
@@ -72,6 +100,15 @@ class Table:
         self.collisions = [collisions_x, collisions_y]
 
     def elliptical_calc(self, ball, phase=True):
+        """Calculates collisions with the boundary of an elliptical table.
+
+        Parameters
+        ----------
+        ball : Ball class instance
+            The ball instance belonging to this table instance.
+        phase : bool, optional
+            Flag for whether to return the phase coordinates of collisions, by default True.
+        """
         a, b = self.dims
         # Collision Detection
         collisions_x = [ball.pos[0]]
@@ -112,6 +149,15 @@ class Table:
             self.collisions = [collisions_x, collisions_y]
 
     def stadium_calc(self, ball, phase=True):
+        """Calculates collisions with the boundary of a Bunimovich-stadium table.
+
+        Parameters
+        ----------
+        ball : Ball class instance
+            The ball instance belonging to this table instance.
+        phase : bool, optional
+            Flag for whether to return the phase coordinates of collisions, by default True.
+        """       
         central_width, central_height = self.dims
         end_radius = central_height/2
         
@@ -197,6 +243,15 @@ class Table:
         self.collisions = [collisions_x, collisions_y]
 
     def plot(self, ball, animate=True):
+        """Plots the table, the ball's trajectory and the phase space coordinates of collisions (if appropriate).
+
+        Parameters
+        ----------
+        ball : Ball class instance
+            The ball instance belonging to this table instance.
+        animate : bool, optional
+            Flag for whether to animate the plotting of the ball's trajectory, by default True.
+        """
         if self.phase_space:
             fig, (ax, ax2) = plt.subplots(2, 1)
             ax2.set_title(f"Phase Space")
