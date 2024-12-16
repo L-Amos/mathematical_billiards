@@ -25,7 +25,7 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["src*"]
+include = ["mathematical_billiards*"]
 exclude = ["img*", "initial_project_files*"]
 
 [tool.pytest.ini_options]
