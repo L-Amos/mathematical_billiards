@@ -41,8 +41,8 @@ def my_form_post():
         else:
             return render_template("form.html", finished="Error", error_msg="ERROR: starting position not on the table.")
     else:
-        if not ((x > width and x-width/2 > np.sqrt((height/2)**2-y**2)) or (x < width/2 and x+width/2 < -np.sqrt((height/2)**2-y**2))):
-            billiards_table.stadium_calc(billiards_ball)
+        if abs(x) <= width/2 and abs(y) <= height/2 and not ((x > width/2 and x-width/2 > np.sqrt((height/2)**2-y**2)) or (x < width/2 and x+width/2 < -np.sqrt((height/2)**2-y**2))):
+                billiards_table.stadium_calc(billiards_ball)
         else:
             return render_template("form.html", finished="Error", error_msg="ERROR: starting position not on the table.")
     # Get location to save GIF
