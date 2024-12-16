@@ -13,7 +13,7 @@
         }
     </script>
     <div id="form">
-        <form onsubmit="TEST()" method="POST">
+        <form onsubmit="getTrajectories()" method="POST">
             <label>Table Geometry</label>
             <input type="radio" class="geometry" name="geometry" value="rectangle" checked="checked">Rectangle
             <input type="radio" class="geometry" name="geometry" value="elliptical">Elliptical
@@ -41,7 +41,7 @@
     </div>
 
     <script>
-        function TEST() {
+        function getTrajectories() {
             document.getElementById("result").style.display = "none";
             document.getElementById("loader").style.display = "block";
         }
@@ -75,6 +75,7 @@
     form #submit {
         background-color: white;
         border-color: #4b5563;
+        color: #4b5563;
         font-family: "Inter Tight", serif;
         font-size: 1.25em;
         padding: 15px;
