@@ -1,5 +1,5 @@
 import sys
-from src import table, ball, utils
+from mathematical_billiards import table, ball, utils
 
 def main():
     allowed_geometries = ["rectangle", "elliptical", "stadium"]

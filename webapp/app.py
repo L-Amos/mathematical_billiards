@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, send_file
 import os
 from pathlib import Path
-from src.table import Table
-from src.ball import Ball
+from mathematical_billiards.table import Table
+from mathematical_billiards.ball import Ball
 
 app = Flask(__name__)
 

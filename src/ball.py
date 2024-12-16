@@ -1,4 +1,4 @@
-from src import utils
+from mathematical_billiards import utils
 import numpy as np
 
 class Ball:

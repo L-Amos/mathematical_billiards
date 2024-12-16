@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from matplotlib.patches import Rectangle
 from scipy import integrate
-from src import utils
+from mathematical_billiards import utils
 
 class Table:
     """Class representing the billiards table.
