@@ -9,7 +9,10 @@
         function checkResult() {
             if ("{{ finished }}" == "True") {
                 document.getElementById("result").style.display = "block";
-            }
+            } else if ("{{ finished }}" == "Error") {
+                document.getElementById("error").style.display = "block";
+                document.getElementById("error").innerText = "{{ error_msg }}"
+            };
         }
     </script>
     <div id="form">
@@ -33,6 +36,8 @@
             <input id="submit" type="submit" value="Get Trajectories">
         </form>
     </div>
+    
+    <div id="error">Fuck</div>
 
     <div id="loader"></div>
     
@@ -42,6 +47,7 @@
 
     <script>
         function getTrajectories() {
+            document.getElementById("error").style.display = "none";
             document.getElementById("result").style.display = "none";
             document.getElementById("loader").style.display = "block";
         }
@@ -93,9 +99,14 @@
 
     } 
 
-    #result img {
-        display: inherit;
-        margin: auto;
+    #error {
+        background-color: #f38383;
+        margin:auto;
+        width: 50%;
+        text-align: center;
+        padding: 5px;
+        display: none;
+        margin-top: 1vh;
     }
 
     #loader {
@@ -109,6 +120,11 @@
       margin: auto;
       margin-top: 5vh;
       display: none;
+    }
+
+    #result img {
+        display: inherit;
+        margin: auto;
     }
     
     /* Safari */
