@@ -9,7 +9,20 @@ def main():
             break
         elif geometry.lower() == "q":
             sys.exit()
-    billiards_table = table.Table(geometry.lower())
+    if geometry.lower() == "rectangle":
+        width = utils.input_test("Table width (positive integer): ", positive=True)
+        height = utils.input_test("Table height (positive integer): ", positive=True)
+    elif geometry.lower() == "elliptical":
+        while True:
+            width = utils.input_test("Table semi-major axis (positive integer): ", positive=True)
+            height = utils.input_test("Table sami-minor axis (positive integer): ", positive=True)
+            if width >= height:
+                break    
+            print("Error: semi-major axis must be larger than semi-minor axis. ")
+    else:
+        width = utils.input_test("Central width (positive integer): ", positive=True)
+        height = utils.input_test("Central height (positive integer): ", positive=True)
+    billiards_table = table.Table(geometry.lower(), width, height)
     x = utils.input_test("Enter starting x position: ", integer=False)
     y = utils.input_test("Enter starting y position: ", integer=False)
     while True:

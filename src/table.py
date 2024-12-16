@@ -21,7 +21,7 @@ class Table:
         dims: list
             Dimensions of the table.
     """
-    def __init__(self, geometry):
+    def __init__(self, geometry, width, height):
         """Creates the billiards table.
 
         Parameters
@@ -33,22 +33,7 @@ class Table:
         self.reflections = 0
         self.collisions = []
         self.phase_space = []
-        if self.geometry == "rectangle":
-            width = utils.input_test("Table width (positive integer): ", positive=True)
-            height = utils.input_test("Table height (positive integer): ", positive=True)
-            self.dims = np.array([width, height])
-        elif self.geometry == "elliptical":
-            while True:
-                a = utils.input_test("Table semi-major axis (positive integer): ", positive=True)
-                b = utils.input_test("Table sami-minor axis (positive integer): ", positive=True)
-                if a >= b:
-                    break    
-                print("Error: semi-major axis must be larger than semi-minor axis. ")
-            self.dims = np.array([a, b])
-        else:
-            width = utils.input_test("Central width (positive integer): ", positive=True)
-            height = utils.input_test("Central height (positive integer): ", positive=True)
-            self.dims = np.array([width, height])
+        self.dims = np.array([width, height])
     
     def rectangle_calc(self, ball):
         """Calculates collisions with the boundary of a rectangular table.
