@@ -242,7 +242,7 @@ class Table:
             self.phase_space = [arc_length, cos_angle]
         self.collisions = [collisions_x, collisions_y]
 
-    def plot(self, ball, animate=True):
+    def plot(self, ball, animate=True, save=False):
         """Plots the table, the ball's trajectory and the phase space coordinates of collisions (if appropriate).
 
         Parameters
@@ -251,6 +251,8 @@ class Table:
             The ball instance belonging to this table instance.
         animate : bool, optional
             Flag for whether to animate the plotting of the ball's trajectory, by default True.
+        save : bool, optional
+            Flag for whether to save the plot as a GIF rather than displaying the animation, by default False.
         """
         if self.phase_space:
             fig, (ax, ax2) = plt.subplots(2, 1)
@@ -298,4 +300,10 @@ class Table:
         ax.set_ylabel("$y$ Position")
         ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), fancybox=True, shadow=True)
         plt.tight_layout()
-        plt.show()
+        if save:
+            writer = animation.PillowWriter(fps=15,
+                                    metadata=dict(artist='Me'),
+                                    bitrate=1800)
+            ani.save('scatter.gif', writer=writer)
+        else:
+            plt.show()
