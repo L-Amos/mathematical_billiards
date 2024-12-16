@@ -1,18 +1,42 @@
-<form method="POST">
-    <label>Geometry</label> <br />
-    <input type="radio" name="geometry" value="rectangle">Rectangle
-    <input type="radio" name="geometry" value="elliptical">Elliptical
-    <input type="radio" name="geometry" value="stadium">Bunimovich Stadium
-    <br />
-    <label>Dimensions</label> <br />
-    Width<input type="number" name="width">
-    Height <input type="number" name="height">
-    <br />
-    <label>Starting Position</label> <br />
-    x<input type="number" name="start_x">
-    y<input type="number" name="start_y">
-    <br />
-    Angle<input type="number" name="angle">
-    <br />
-    <input type="submit">
-</form>
+
+<body onload="checkResult()">
+    <script>
+        function checkResult() {
+            if ("{{ finished }}" == "True") {
+                document.getElementById("result").style.display = "block";
+                console.log("{{ finished }}")
+            }
+        }
+    </script>
+    <form method="POST">
+        <label>Geometry</label> <br />
+        <input type="radio" name="geometry" value="rectangle">Rectangle
+        <input type="radio" name="geometry" value="elliptical">Elliptical
+        <input type="radio" name="geometry" value="stadium">Bunimovich Stadium
+        <br />
+        <label>Dimensions</label> <br />
+        Width<input type="number" name="width">
+        Height <input type="number" name="height">
+        <br />
+        <label>Starting Position</label> <br />
+        x<input type="number" name="start_x">
+        y<input type="number" name="start_y">
+        <br />
+        Angle<input type="number" name="angle">
+        <br />
+        <input onclick="TEST()" type="submit">
+    </form>
+
+    <div id="display"></div>
+
+    <div id="result" style="display:none">
+        <img src="static/scatter.gif" />
+    </div>
+
+    <script>
+        function TEST() {
+            document.getElementById("display").innerText = "Loading...";
+            document.getElementById("result").style.display = "none";
+        }
+    </script>
+</body>
