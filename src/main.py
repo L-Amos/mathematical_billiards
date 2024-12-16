@@ -19,5 +19,3 @@ def main():
     else:
         billiards_table.stadium_calc(billiards_ball)
     billiards_table.plot(billiards_ball)
-
-main()
