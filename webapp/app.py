@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, send_file
 import os
+from pathlib import Path
 from src.table import Table
 from src.ball import Ball
 
@@ -32,5 +33,8 @@ def my_form_post():
         billiards_table.elliptical_calc(billiards_ball)
     else:
         billiards_table.stadium_calc(billiards_ball)
-    billiards_table.plot(billiards_ball, save="static/scatter.gif")
+    # Get location to save GIF
+    current_folder = Path(__file__).parent.resolve()
+    save_loc = current_folder / "static/scatter.gif"
+    billiards_table.plot(billiards_ball, save=save_loc)
     return render_template("form.html", finished="True")
