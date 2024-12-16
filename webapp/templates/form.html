@@ -1,42 +1,96 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
 
 <body onload="checkResult()">
     <script>
         function checkResult() {
             if ("{{ finished }}" == "True") {
                 document.getElementById("result").style.display = "block";
-                console.log("{{ finished }}")
             }
         }
     </script>
-    <form method="POST">
-        <label>Geometry</label> <br />
-        <input type="radio" name="geometry" value="rectangle">Rectangle
-        <input type="radio" name="geometry" value="elliptical">Elliptical
-        <input type="radio" name="geometry" value="stadium">Bunimovich Stadium
-        <br />
-        <label>Dimensions</label> <br />
-        Width<input type="number" name="width">
-        Height <input type="number" name="height">
-        <br />
-        <label>Starting Position</label> <br />
-        x<input type="number" name="start_x">
-        y<input type="number" name="start_y">
-        <br />
-        Angle<input type="number" name="angle">
-        <br />
-        <input onclick="TEST()" type="submit">
-    </form>
+    <div id="form">
+        <form onsubmit="TEST()" method="POST">
+            <label>Table Geometry</label>
+            <input type="radio" name="geometry" value="rectangle" checked="checked">Rectangle
+            <input type="radio" name="geometry" value="elliptical">Elliptical
+            <input type="radio" name="geometry" value="stadium">Bunimovich Stadium
+            <br />
+            <label>Table Dimensions</label>
+            <input type="number" name="width" placeholder="Width" required>
+            <input type="number" name="height" placeholder="Height" required>
+            <br />
+            <label>Starting Position</label>
+            <input type="number" name="start_x" placeholder="X-Position" required>
+            <input type="number" name="start_y" placeholder="Y-Position" required>
+            <br />
+            <label>Initial Angle (Degrees)</label>
+            <input type="number" name="angle" placeholder="90">
+            <br />
+            <input type="submit" style="margin-top: 1vh;">
+        </form>
+    </div>
 
-    <div id="display"></div>
-
+    <div id="loader"></div>
+    
     <div id="result" style="display:none">
-        <img src="static/scatter.gif" />
+        <img id="scatter_gif" src="static/scatter.gif" />
     </div>
 
     <script>
         function TEST() {
-            document.getElementById("display").innerText = "Loading...";
             document.getElementById("result").style.display = "none";
+            document.getElementById("loader").style.display = "block";
         }
     </script>
 </body>
+
+<style>
+    body {
+        font-family: "Inter Tight", serif;
+        padding: 20px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        font-size: 1.25em;
+    }
+    form {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+    }
+    #result img {
+        display: inherit;
+        margin: auto;
+    }
+
+    #loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+      margin: auto;
+      margin-top: 5vh;
+      display: none;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style>
