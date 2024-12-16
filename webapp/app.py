@@ -25,14 +25,6 @@ def my_form_post():
     x = float(request.form['start_x'])
     y = float(request.form['start_y'])
     angle = float(request.form['angle'])
-    try:
-        float(width)
-        float(height)
-        float(x)
-        float(y)
-        float(angle)
-    except ValueError:
-        return render_template("form.html", finished="Error", error_msg="ERROR: inputs must be integers or floats.")
     if width <= 0 or height <= 0:
         return render_template("form.html", finished="Error", error_msg="ERROR: width and height must be greater than zero.")
     billiards_table = Table(geometry, width, height)
