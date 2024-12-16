@@ -1,0 +1,33 @@
+[project]
+name = "mathematical_billiards"
+version = "1.0.0"
+authors = [
+    {name = "Luke Amos", email="luke.amos.la@gmail.com"}
+]
+description = "An installable package for simulating and visualizing mathematical billiards."
+readme = "README.md"
+requires-python = ">=3.10.0"
+license = {text = "Academic/Educational Use Only"}
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib"
+]
+
+[project.scripts]
+billiards = "src.main:main"
+
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+exclude = ["img*", "initial_project_files*"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
