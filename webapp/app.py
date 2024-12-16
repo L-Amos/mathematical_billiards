@@ -33,5 +33,7 @@ def my_form_post():
         billiards_table.elliptical_calc(billiards_ball)
     else:
         billiards_table.stadium_calc(billiards_ball)
+    if not os.path.exists("static"):
+        os.makedirs("static")
     billiards_table.plot(billiards_ball, save="static/scatter.gif")
     return render_template("form.html", finished="True")
