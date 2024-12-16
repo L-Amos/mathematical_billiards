@@ -286,6 +286,7 @@ class Table:
         ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), fancybox=True, shadow=True)
         plt.tight_layout()
         if save:
+            fig.set_size_inches(8, 8)
             writer = animation.PillowWriter(fps=15,
                                     metadata=dict(artist='Me'),
                                     bitrate=1800)
