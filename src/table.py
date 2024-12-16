@@ -289,6 +289,6 @@ class Table:
             writer = animation.PillowWriter(fps=15,
                                     metadata=dict(artist='Me'),
                                     bitrate=1800)
-            ani.save('scatter.gif', writer=writer)
+            ani.save(save, writer=writer)
         else:
             plt.show()
