@@ -34,7 +34,7 @@ def my_form_post():
     else:
         billiards_table.stadium_calc(billiards_ball)
     # Get location to save GIF
-    current_folder = Path(__file__).parent.resolve()
+    current_folder = Path(__file__).resolve()
     save_loc = current_folder / "static/scatter.gif"
     billiards_table.plot(billiards_ball, save=save_loc)
     return render_template("form.html", finished="True")
