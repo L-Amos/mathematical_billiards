@@ -10,7 +10,22 @@ def main():
         elif geometry.lower() == "q":
             sys.exit()
     billiards_table = table.Table(geometry.lower())
-    billiards_ball = ball.Ball(billiards_table)
+    x = utils.input_test("Enter starting x position: ", integer=False)
+    y = utils.input_test("Enter starting y position: ", integer=False)
+    while True:
+            if billiards_table.geometry == "rectangle":
+                if abs(x) <= billiards_table.dims[0]/2 and abs(y) <= billiards_table.dims[1]/2:
+                    break
+            elif billiards_table.geometry == "elliptical":
+                if (x/billiards_table.dims[0])**2 + (y/billiards_table.dims[1])**2 <= 1:
+                    break
+            else:
+                if abs(x) <= billiards_table.dims[0]/2 and abs(y) <= billiards_table.dims[1]/2:
+                    if not ((x > billiards_table.dims[0]/2 and x-billiards_table.dims[0]/2 > np.sqrt((billiards_table.dims[1]/2)**2-y**2)) or (x < billiards_table.dims[0]/2 and x+billiards_table.dims[0]/2 < -np.sqrt((billiards_table.dims[1]/2)**2-y**2))):
+                        break
+            print('Error: not on the table')
+    angle = utils.input_test("Enter starting angle in degrees: ", integer=False)
+    billiards_ball = ball.Ball(billiards_table, x, y, angle)
     billiards_table.reflections = utils.input_test("Enter the number of collisions to see: ", positive=True)
     if geometry == "rectangle":
         billiards_table.rectangle_calc(billiards_ball)
