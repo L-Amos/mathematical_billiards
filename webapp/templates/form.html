@@ -18,9 +18,9 @@
     <div id="form">
         <form onsubmit="getTrajectories()" method="POST">
             <label>Table Geometry</label>
-            <input type="radio" class="geometry" name="geometry" value="rectangle" checked="checked">Rectangle
-            <input type="radio" class="geometry" name="geometry" value="elliptical">Ellipse
-            <input type="radio" class="geometry" name="geometry" value="stadium">Bunimovich Stadium
+            <input type="radio" class="geometry" name="geometry" value="rectangle" checked="checked"><p>Rectangle</p>
+            <input type="radio" class="geometry" name="geometry" value="elliptical"><p>Ellipse</p>
+            <input type="radio" class="geometry" name="geometry" value="stadium"><p>Bunimovich Stadium</p>
             <br />
             <label>Table Dimensions</label>
             <input type="number" step="any" name="width" placeholder="Width" required>
@@ -60,18 +60,31 @@
         padding: 20px;
         color: #4b5563;
     }
-    label {
-        display: block;
-        font-weight: bold;
-        margin-top: 1vh;
-        margin-bottom: 1vh;
-        font-size: 1.5rem;
-    }
+
     form {
         width: 50%;
         margin: auto;
         text-align: center;
         accent-color: #4ade80;
+        
+    }
+    
+    form label {
+        display: block;
+        font-weight: bold;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        font-size: 2rem;
+    }
+
+    form input,p {
+        font-size: 1.25rem;
+        display: inline;
+        color: #4b5563;
+    }
+
+    form input {
+        margin-bottom: 2.5vh;
     }
 
     form .geometry:hover {
