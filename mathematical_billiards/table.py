@@ -285,6 +285,7 @@ class Table:
         ax.set_ylabel("$y$ Position")
         ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2), fancybox=True, shadow=True)
         plt.tight_layout()
+        plt.subplots_adjust(left=0.1, right=0.9)  # Centre plot
         if save:
             fig.set_size_inches(8, 8)
             writer = animation.PillowWriter(fps=15,
