@@ -22,6 +22,7 @@
             <input onclick="dimHint('static/ellipse_dims.svg')" type="radio" class="geometry" name="geometry" value="elliptical"><p>Ellipse</p>
             <input onclick="dimHint('static/stadium_dims.svg')" type="radio" class="geometry" name="geometry" value="stadium"><p>Bunimovich Stadium</p>
             <br />
+            <img id="dim_hint" src="static/rectangle_dims.svg" />
             <label>Table Dimensions</label>
             <input type="number" step="any" name="width" placeholder="Width" required>
             <input type="number" step="any" name="height" placeholder="Height" required>
@@ -35,7 +36,6 @@
             <br />
             <input id="submit" type="submit" value="Get Trajectories">
         </form>
-        <img id="dim_hint" src="static/rectangle_dims.svg" />
     </div>
     
     <div id="error">Fuck</div>
@@ -67,13 +67,17 @@
 
     #form_stuff {
         width:80%;
-        display: flex;
+        margin: auto;
+    }
+
+    #dim_hint {
+        height: 30%;
         margin: auto;
     }
 
 
     form {
-        width: 50%;
+        width: 100%;
         text-align: center;
         accent-color: #4ade80;
         
