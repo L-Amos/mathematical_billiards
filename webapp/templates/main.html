@@ -15,18 +15,19 @@
             };
         }
     </script>
-    <div id="form">
+    <div id="form_stuff">
         <form onsubmit="getTrajectories()" method="POST">
             <label>Table Geometry</label>
-            <input type="radio" class="geometry" name="geometry" value="rectangle" checked="checked"><p>Rectangle</p>
-            <input type="radio" class="geometry" name="geometry" value="elliptical"><p>Ellipse</p>
-            <input type="radio" class="geometry" name="geometry" value="stadium"><p>Bunimovich Stadium</p>
+            <input onclick="dimHint('static/rectangle_dims.svg')" type="radio" class="geometry" name="geometry" value="rectangle" checked="checked"><p>Rectangle</p>
+            <input onclick="dimHint('static/ellipse_dims.svg')" type="radio" class="geometry" name="geometry" value="elliptical"><p>Ellipse</p>
+            <input onclick="dimHint('static/stadium_dims.svg')" type="radio" class="geometry" name="geometry" value="stadium"><p>Bunimovich Stadium</p>
             <br />
             <label>Table Dimensions</label>
             <input type="number" step="any" name="width" placeholder="Width" required>
             <input type="number" step="any" name="height" placeholder="Height" required>
             <br />
-            <label>Starting Position</label>
+            <label>Starting Position</label><br />
+            
             <input type="number" step="any" name="start_x" placeholder="X-Position" required>
             <input type="number" step="any" name="start_y" placeholder="Y-Position" required>
             <br />
@@ -35,6 +36,7 @@
             <br />
             <input id="submit" type="submit" value="Get Trajectories">
         </form>
+        <img id="dim_hint" src="static/rectangle_dims.svg" />
     </div>
     
     <div id="error">Fuck</div>
@@ -51,6 +53,9 @@
             document.getElementById("result").style.display = "none";
             document.getElementById("loader").style.display = "block";
         }
+        function dimHint(path) {
+            document.getElementById("dim_hint").src = path
+        }
     </script>
 </body>
 
@@ -61,9 +66,15 @@
         color: #4b5563;
     }
 
+    #form_stuff {
+        width:80%;
+        display: flex;
+        margin: auto;
+    }
+
+
     form {
         width: 50%;
-        margin: auto;
         text-align: center;
         accent-color: #4ade80;
         
